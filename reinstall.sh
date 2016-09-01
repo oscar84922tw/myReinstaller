@@ -1,7 +1,7 @@
 # @Author: Oscar
 # @Date:   2016-09-01 16:33:11
-# @Last Modified by:   Oscar
-# @Last Modified time: 2016-09-01 16:56:05
+# @Last Modified by:   oscar
+# @Last Modified time: 2016-09-01 23:00:02
 
 # Install Homebrew
 
@@ -15,7 +15,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # Install if we don't have it
 if test ! $(which brew);
   then echo "Installing homebrew..."
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" 
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
 brew tap homebrew/versions
@@ -24,7 +24,7 @@ brew upgrade --all
 
 # Install packages
 apps=( caskroom/cask/brew-cask git gnu-sed --with-default-names go wget mercurial mackup mysql python python3 scala ruby vim wget zsh autoconf mongodb source-highlight node openssl sqlite ssh-copy-id tor htop-osx zsh-completions zsh-syntax-highlighting maven )
-caskapps=( android-studio alfred mamp spotify sequel-pro eclipse-java google-chrome intellij-idea iterm2 java pomotodo pycharm webstorm vlc sublime-text3 qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql webpquicklook suspicious-package dropbox appcleaner )
+caskapps=( android-studio alfred mamp spotify sequel-pro eclipse-java google-chrome intellij-idea iterm2 java pomotodo pycharm webstorm vlc qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql webpquicklook suspicious-package dropbox appcleaner sublime-text3 evernote )
 
 brew install "${apps[@]}"
 brew tap caskroom/versions
