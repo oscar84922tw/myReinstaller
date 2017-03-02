@@ -1,7 +1,7 @@
 # @Author: Oscar
 # @Date:   2016-09-01 16:33:11
 # @Last Modified by:   oscar
-# @Last Modified time: 2016-09-01 23:00:02
+# @Last Modified time: 2016-09-09 12:22:23
 
 # Install Homebrew
 
@@ -23,7 +23,7 @@ brew update
 brew upgrade --all
 
 # Install packages
-apps=( caskroom/cask/brew-cask git gnu-sed --with-default-names go wget mercurial mackup mysql python python3 scala ruby vim wget zsh autoconf mongodb source-highlight node openssl sqlite ssh-copy-id tor htop-osx zsh-completions zsh-syntax-highlighting maven )
+apps=( caskroom/cask/brew-cask git gnu-sed --with-default-names go wget mercurial mackup mysql wget zsh  mongodb source-highlight node htop-osx maven harfbuzz pidof arm heroku pixman autoconf highlight pkg-config autogen htop platformio automake icu4c polipo bdw-gc json-c postgresql boost libevent protobuf boot2docker libffi pstree cairo libgpg-error python cmake libksba python3 ctags libpng readline docker libtool redis docker-machine libunistring rkhunter doxygen libxml2 rrdtool eris libyaml ruby fail2ban lua ruby21 fontconfig luajit scala freetype mackup smartmontools gdbm mercurial sqlite geoip mongodb ssh-copy-id gettext mysql tor git ncdu uncrustify glib node vim gmp openssl watchman gnu-sed p0f wget go pango xz gobject-introspection pcre zsh guile perl zsh-syntax-highlighting )
 caskapps=( android-studio alfred mamp spotify sequel-pro eclipse-java google-chrome intellij-idea iterm2 java pomotodo pycharm webstorm vlc qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql webpquicklook suspicious-package dropbox appcleaner sublime-text3 evernote )
 
 brew install "${apps[@]}"
@@ -32,6 +32,10 @@ brew cask update
 brew cask install --appdir="/Applications" "${caskapps[@]}"
 brew cleanup
 brew cask cleanup
+
+pythonFramework=( ipython scrapy )
+
+pip install "${pythonFramework[@]}"
 
 # 電池顯示是百分百
 defaults write com.apple.menuextra.battery -bool true
