@@ -23,19 +23,19 @@ brew update
 brew upgrade --all
 
 # Install packages
-apps=( caskroom/cask/brew-cask git gnu-sed --with-default-names go wget mercurial mackup mysql wget zsh  mongodb source-highlight node htop-osx maven harfbuzz pidof arm heroku pixman autoconf highlight pkg-config autogen htop platformio automake icu4c polipo bdw-gc json-c postgresql boost libevent protobuf boot2docker libffi pstree cairo libgpg-error python cmake libksba python3 ctags libpng readline docker libtool redis docker-machine libunistring rkhunter doxygen libxml2 rrdtool eris libyaml ruby fail2ban lua ruby21 fontconfig luajit scala freetype mackup smartmontools gdbm mercurial sqlite geoip mongodb ssh-copy-id gettext mysql tor git ncdu uncrustify glib node vim gmp openssl watchman gnu-sed p0f wget go pango xz gobject-introspection pcre zsh guile perl zsh-syntax-highlighting )
-caskapps=( android-studio alfred mamp spotify sequel-pro eclipse-java google-chrome intellij-idea iterm2 java pomotodo pycharm webstorm vlc qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql webpquicklook suspicious-package dropbox appcleaner sublime-text3 evernote )
+apps=( autoconf automake cmake ctags ffmpeg gcc git go gradle highlight htop jpeg libdnet libevent libffi libmpc libpng libtiff libtool libyaml nmap node numpy openssl pcre pixman pkg-config polipo portaudio python python3 r rkhunter ruby smartmontools source-highlight sqlite ssh-copy-id testdisk tor valgrind vim wget zsh zsh-syntax-highlighting )
 
+caskapps=( alfred appcleaner arduino atom dropbox firefox google-chrome intellij-idea iterm2 java julia
+mplayerx mysqlworkbench processing pycharm robomongo qlcolorcode qlmarkdown qlprettypatch qlstephen
+quicklook-csv quicklook-json sequel-pro skype spotify sqlitebrowser vlc webpquicklook webstorm rstudio)
+
+pythonFramework=( )
 brew install "${apps[@]}"
 brew tap caskroom/versions
 brew cask update
 brew cask install --appdir="/Applications" "${caskapps[@]}"
 brew cleanup
 brew cask cleanup
-
-pythonFramework=( ipython scrapy )
-
-pip install "${pythonFramework[@]}"
 
 # 電池顯示是百分百
 defaults write com.apple.menuextra.battery -bool true
@@ -48,6 +48,3 @@ defaults write com.apple.finder ShowPathbar -bool true
 
 # 禁止在網絡驅動器上生成 .DS_Store 文件
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-
-# 重新整理 launchpad
-defaults write com.apple.dock ResetLaunchPad -bool true; killall Dock
