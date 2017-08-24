@@ -23,7 +23,7 @@ brew update
 brew upgrade --all
 
 # Install packages
-apps=( autoconf automake cmake ctags ffmpeg gcc git go gradle highlight htop jpeg libdnet libevent libffi libmpc libpng libtiff libtool libyaml nmap node numpy openssl pcre pixman pkg-config polipo portaudio python python3 r rkhunter ruby smartmontools source-highlight sqlite ssh-copy-id testdisk tor valgrind vim wget zsh zsh-syntax-highlighting )
+apps=( autoconf automake cmake ctags ffmpeg gcc git go gradle highlight htop jpeg libdnet libevent libffi libmpc libpng libtiff libtool libyaml nmap node numpy mycli macvim  openssl pcre pixman pkg-config polipo portaudio python python3 r rkhunter ruby smartmontools source-highlight sqlite ssh-copy-id testdisk tor tig tmux valgrind vim wget zsh zsh-syntax-highlighting )
 
 caskapps=( alfred appcleaner arduino atom dropbox firefox google-chrome intellij-idea iterm2 java julia
 mplayerx mysqlworkbench processing pycharm robomongo qlcolorcode qlmarkdown qlprettypatch qlstephen
@@ -36,7 +36,7 @@ brew cask update
 brew cask install --appdir="/Applications" "${caskapps[@]}"
 brew cleanup
 brew cask cleanup
-
+sudo ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport /usr/sbin/airport
 # 電池顯示是百分百
 defaults write com.apple.menuextra.battery -bool true
 
