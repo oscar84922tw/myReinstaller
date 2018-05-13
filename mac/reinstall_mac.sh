@@ -23,20 +23,19 @@ brew update
 brew upgrade --all
 
 # Install packages
-apps=( autoconf automake cmake ctags ffmpeg gcc git go gradle highlight htop jpeg libdnet libevent libffi libmpc libpng libtiff libtool libyaml nmap node numpy mycli macvim  openssl pcre pixman pkg-config polipo portaudio python python3 r rkhunter ruby smartmontools source-highlight sqlite ssh-copy-id testdisk tor tig tmux valgrind vim wget zsh zsh-syntax-highlighting )
+apps=( autoconf automake cmake ctags ffmpeg gcc git go gradle highlight htop jpeg libdnet libevent libffi libmpc libpng libtiff libtool libyaml nmap node numpy mycli macvim  openssl pcre pixman pkg-config polipo portaudio python python3 r rkhunter ruby smartmontools source-highlight sqlite ssh-copy-id testdisk tor tig tmux valgrind vim wget zsh zsh-syntax-highlighting z )
 
-caskapps=( alfred appcleaner arduino atom dropbox firefox google-chrome intellij-idea iterm2 java julia
-mplayerx mysqlworkbench processing pycharm robomongo qlcolorcode qlmarkdown qlprettypatch qlstephen
-quicklook-csv quicklook-json sequel-pro skype spotify sqlitebrowser vlc webpquicklook webstorm rstudio)
+# caskapps=( appcleaner arduino atom dropbox firefox google-chrome iterm2 java mplayerx mysqlworkbench processing robomongo quicklook-csv quicklook-json skype spotify sqlitebrowser vlc webpquicklook rstudio)
 
-pythonFramework=( )
+pythonFramework=( glances )
 brew install "${apps[@]}"
 brew tap caskroom/versions
-brew cask update
+brew update
 brew cask install --appdir="/Applications" "${caskapps[@]}"
 brew cleanup
 brew cask cleanup
 sudo ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport /usr/sbin/airport
+
 # 電池顯示是百分百
 defaults write com.apple.menuextra.battery -bool true
 
