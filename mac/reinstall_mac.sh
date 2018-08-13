@@ -28,10 +28,11 @@ apps=( autoconf automake cmake ctags ffmpeg gcc git go gradle highlight htop jpe
 # caskapps=( appcleaner arduino atom dropbox firefox google-chrome iterm2 java mplayerx mysqlworkbench processing robomongo quicklook-csv quicklook-json skype spotify sqlitebrowser vlc webpquicklook rstudio)
 
 pythonFramework=( glances )
+pip3 install "${pythonFramework[@]}"
 brew install "${apps[@]}"
 brew tap caskroom/versions
 brew update
-brew cask install --appdir="/Applications" "${caskapps[@]}"
+# brew cask install --appdir="/Applications" "${caskapps[@]}"
 brew cleanup
 brew cask cleanup
 sudo ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport /usr/sbin/airport
