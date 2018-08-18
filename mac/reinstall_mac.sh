@@ -23,9 +23,9 @@ brew update
 brew upgrade --all
 
 # Install packages
-apps=( wget autoconf automake cmake ctags ffmpeg gcc git go gradle highlight htop nmap node mycli macvim  openssl python python3  rkhunter ruby smartmontools source-highlight sqlite ssh-copy-id tor tig tmux valgrind vim wget zsh zsh-syntax-highlighting z )
+apps=( wget autoconf automake cmake ctags ffmpeg gcc git go gradle highlight htop nmap node mycli macvim openssl pcre pixman pkg-config polipo portaudio python python3 rkhunter ruby smartmontools source-highlight sqlite ssh-copy-id tig tmux valgrind vim zsh zsh-syntax-highlighting z ack )
 
-caskapps=( appcleaner dropbox firefox google-chrome iterm2 java mplayerx mysqlworkbench quicklook-csv quicklook-json skype spotify sqlitebrowser vlc webpquicklook docker )
+caskapps=( appcleaner firefox google-chrome iterm2 mysqlworkbench quicklook-csv quicklook-json spotify sqlitebrowser webpquicklook docker )
 
 pythonFramework=( glances )
 pip3 install "${pythonFramework[@]}"
@@ -35,7 +35,21 @@ brew update
 brew cask install --appdir="/Applications" "${caskapps[@]}"
 brew cleanup
 brew cask cleanup
-sudo ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport /usr/sbin/airport
+
+
+# install oh my zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting 
+
+# install vim
+wget clone https://raw.githubusercontent.com/ipomoealba/Pyvim/master/.vimrc ~/.vimrc
+
+# install oh my tmux 
+cd
+git clone https://github.com/gpakosz/.tmux.git
+ln -s -f .tmux/.tmux.conf
 
 # 電池顯示是百分百
 defaults write com.apple.menuextra.battery -bool true

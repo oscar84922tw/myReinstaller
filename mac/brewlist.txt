@@ -1,5 +1,0 @@
-autoconf automake cmake ctags ffmpeg gcc git go gradle highlight htop-osx
-jpeg libdnet libevent libffi libmpc libpng libtiff libtool libyaml lua luarocks
-nmap node numpy openblas openssl pcre pixman pkg-config polipo portaudio python python3 r
-rkhunter ruby smartmontools source-highlight sqlite ssh-copy-id testdisk tor valgrind
-vim wget zsh zsh-syntax-highlighting
