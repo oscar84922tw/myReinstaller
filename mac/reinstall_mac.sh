@@ -43,14 +43,13 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting 
 
+cp ./zshrc ~/.zshrc
 # install vim
 wget clone https://raw.githubusercontent.com/ipomoealba/Pyvim/master/.vimrc ~/.vimrc
 
 # install oh my tmux 
-cd
-git clone https://github.com/gpakosz/.tmux.git
-ln -s -f .tmux/.tmux.conf
-
+cd ~ || git clone https://github.com/gpakosz/.tmux.git || ln -s -f .tmux/.tmux.conf
+wget https://raw.githubusercontent.com/oscar84922tw/myReinstaller/master/mac/tmux.conf.local ~/.tmux.conf.local
 # 電池顯示是百分百
 defaults write com.apple.menuextra.battery -bool true
 
