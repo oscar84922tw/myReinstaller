@@ -22,15 +22,12 @@ brew tap homebrew/versions
 brew update
 brew upgrade --all
 brew bundle
-# Install packages
-# apps=( wget autoconf automake cmake ctags ffmpeg gcc git go gradle highlight htop nmap node mycli macvim openssl pcre pixman pkg-config polipo portaudio python python3 rkhunter ruby smartmontools source-highlight sqlite ssh-copy-id tig tmux valgrind vim zsh zsh-syntax-highlighting z ack )
 
 caskapps=( appcleaner firefox google-chrome iterm2 mysqlworkbench quicklook-csv quicklook-json spotify webpquicklook docker )
 
 pythonFramework=( glances virtualenvwrapper )
-# brew install "${apps[@]}"
-# brew install caskroom/cask/brew-cask
-# brew tap caskroom/versions
+brew install caskroom/cask/brew-cask
+brew tap caskroom/versions
 brew update
 brew cask install --appdir="/Applications" "${caskapps[@]}"
 brew cleanup
@@ -48,6 +45,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting 
 
+# copy my zshrc settings
 cp zshrc ~/.zshrc
 
 # install vim
