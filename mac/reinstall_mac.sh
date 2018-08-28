@@ -25,7 +25,7 @@ brew bundle
 
 caskapps=( appcleaner firefox google-chrome iterm2 mysqlworkbench quicklook-csv quicklook-json spotify webpquicklook docker )
 
-pythonFramework=( glances virtualenvwrapper )
+pythonFramework=( glances virtualenvwrapper howdoi percol )
 brew install caskroom/cask/brew-cask
 brew tap caskroom/versions
 brew update
