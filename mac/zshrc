@@ -6,7 +6,7 @@
     export GOBIN=$GOPATH/bin
     export PATH=$HOME/bin:/usr/local/bin:$GOPATH:$GOBIN:$HOME/.pyenv/bin:$PATH
     # Path to your oh-my-zsh installation.
-    export ZSH="/Users/cornelious_chen/.oh-my-zsh"
+    export ZSH="/Users/$USER/.oh-my-zsh"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
     # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -113,5 +113,5 @@ source $ZSH/oh-my-zsh.sh
     [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
     test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
+    alias rm="rmtrash"
     eval "$(jenv init -)"
