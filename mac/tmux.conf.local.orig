@@ -195,9 +195,15 @@ tmux_conf_theme_status_left_bg='#ffff00,#ff00af,#00afff'  # yellow, pink, white 
 tmux_conf_theme_status_left_attr='bold,none,none'
 
 # status right style
-tmux_conf_theme_status_right_fg='#8a8a8a,#e4e4e4,#000000,#080808,#ffffff, #ffffff' # light gray, white, black, dark gray, white
-tmux_conf_theme_status_right_bg='#080808,#d70000,#e4e4e4,#8a8a8a,#000000, #770077' # dark gray, red, white, light gray, black
+<<<<<<< HEAD
+tmux_conf_theme_status_right_fg='#8a8a8a,#e4e4e4,#000000,#080808,#ffffff' # light gray, white, black, dark gray, white
+tmux_conf_theme_status_right_bg='#080808,#d70000,#e4e4e4,#8a8a8a,#000000' # dark gray, red, white, light gray, black
 tmux_conf_theme_status_right_attr='none,bold,none,none,none'
+=======
+tmux_conf_theme_status_right_fg='#8a8a8a,#e4e4e4,#000000,#ffffff,#f0d89e,#ffffff' # light gray, white, black
+tmux_conf_theme_status_right_bg='#080808,#d70000,#e4e4e4,#000000,#1c82f0,#770077' # dark gray, red, white
+tmux_conf_theme_status_right_attr='none,bold,none,none,none,none'
+>>>>>>> fdc95b7bf19175c4d2f715a4a2262fcb51f16482
 
 # pairing indicator
 tmux_conf_theme_pairing='👓 '          # U+1F453
