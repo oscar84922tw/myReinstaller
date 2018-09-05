@@ -9,3 +9,5 @@ rm Brewfile
 brew bundle dump
 rm Brewfile.bak
 echo "backup brew"
+
+git add . && git commit -m "udpate" && git push
