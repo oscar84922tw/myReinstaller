@@ -183,7 +183,7 @@ tmux_conf_theme_right_separator_sub=''  #   PowerlineSymbols.otf font
 # set -g status-left-length 60
 
 tmux_conf_theme_status_left=' ❐ #S | ↑#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} '
-tmux_conf_theme_status_right="#{prefix}#{pairing}#{synchronized} #{?battery_status, #{battery_status},}#{?battery_vbar, #{battery_vbar},}#{?battery_percentage, #{battery_percentage},} , %R , %d %b | #{username}#{root} | #{hostname} | #(curl icanhazip.com) | #(ifconfig en0 | grep 'inet ' | awk '{print \"en0 \" $2}')#(ifconfig en1 | grep 'inet ' | awk '{print \"en1 \" $2}')#(ifconfig en2 | grep 'inet ' | awk '{print \"en2 \" $2}')#(ifconfig en3 | grep 'inet ' | awk '{print \"en3 \" $2}')#[fg=red]#(ifconfig tun0 | grep 'inet ' | awk '{print \"vpn \" $2}')  "
+tmux_conf_theme_status_right="#{prefix}#{pairing}#{synchronized} #{?battery_status, #{battery_status},}#{?battery_vbar, #{battery_vbar},}#{?battery_percentage, #{battery_percentage},} , %R , %d %b | #{username}#{root} | #{hostname} | #(curl icanhazip.com) | #(ifconfig en0 | grep 'inet ' | awk '{print \"en0 \" $2}') #(ifconfig en1 | grep 'inet ' | awk '{print \"en1 \" $2}') #(ifconfig en2 | grep 'inet ' | awk '{print \"en2 \" $2}') #(ifconfig en3 | grep 'inet ' | awk '{print \"en3 \" $2}') #[fg=red]#(ifconfig tun0 | grep 'inet ' | awk '{print \"vpn \" $2}')  "
 
 # status left style
 tmux_conf_theme_status_left_fg='#000000,#e4e4e4,#e4e4e4'  # black, white , white

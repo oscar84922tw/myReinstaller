@@ -10,7 +10,7 @@ set guifont=Noto\ Mono\ for\ Powerline:h12
 " Highlight the cursor
 set cursorcolumn
 set cursorline
-colorscheme default
+colorscheme gotham256
 " Set search Option
 set ignorecase
 set smartcase
@@ -36,9 +36,10 @@ ca w!! w !sudo tee "%"
 if has("gui_running")
   syntax on
   set hlsearch
-  colorscheme macvim
+  colorscheme gotham
   set bs=2
   set ai
+  set guioptions=
   set ruler
 endif
 
@@ -72,7 +73,8 @@ endif
 " this needs to be here, so vim-plug knows we are declaring the plugins we
 " want to use
 call plug#begin('~/.vim/plugged')
-
+" theme 
+Plug 'whatyouhide/vim-gotham'
 " Ctags
 Plug 'vim-scripts/taglist.vim'
 " Plugins from github repos:
@@ -292,8 +294,8 @@ nmap ,wr :Ack <cword><CR>
 " Plugins settings and mappings
 " Edit them as you wish.
 " Run Python
-nnoremap <buffer> <F9> :w <CR> :exec '!python3' shellescape(@%, 1)<cr>
-nnoremap <buffer> <F10> :w <CR> :exec '!python3 -m pdb' shellescape(@%, 1)<cr>
+nnoremap <buffer> <F9> :w <CR> :exec '!python' shellescape(@%, 1)<cr>
+nnoremap <buffer> <F10> :w <CR> :exec '!python -m pdb' shellescape(@%, 1)<cr>
 " AutoFormat
 noremap <F6> :Autoformat<CR>
 
@@ -601,8 +603,8 @@ let g:SrcExpl_isUpdateTags = 0
 let g:SrcExpl_updateTagsCmd = "ctags --sort=foldcase -R ."
 
 
-nmap <F8>  :TrinityToggleAll<CR> 
 
+" nmap <F8>  :TrinityToggleAll<CR> 
 if has("cscope")
 
     """"""""""""" Standard cscope/vim boilerplate
