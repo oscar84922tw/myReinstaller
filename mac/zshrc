@@ -106,6 +106,7 @@ source $ZSH/oh-my-zsh.sh
     # alias zshconfig="mate ~/.zshrc"
     # alias ohmyzsh="mate ~/.oh-my-zsh"
     alias rm="rmtrash"
+    alias h="history"
     source /usr/local/bin/virtualenvwrapper.sh
 
     eval "$(pyenv init -)"
@@ -114,5 +115,4 @@ source $ZSH/oh-my-zsh.sh
     [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
     test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
     eval "$(jenv init -)"
