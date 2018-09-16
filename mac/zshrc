@@ -2,6 +2,7 @@
     export PYENV_VIRTUALENV_DISABLE_PROMPT=1
     export PATH="$HOME/.jenv/bin:$PATH"
     export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2
+    export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home/
     export GOPATH=/usr/local/Cellar/go/1.10.3
     export GOBIN=$GOPATH/bin
     export PATH=$HOME/bin:/usr/local/bin:$GOPATH:$GOBIN:$HOME/.pyenv/bin:$PATH:/usr/local/Cellar/mysql/8.0.12/bin
@@ -11,8 +12,8 @@
 # Set name of the theme to load. Optionally, if you set this to "random"
     # it'll load a random theme each time that oh-my-zsh is loaded.
     # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-    # ZSH_THEME="evan"
-ZSH_THEME="spaceship"
+    ZSH_THEME="evan"
+# ZSH_THEME="spaceship"
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
 # cause zsh load theme from this variable instead of
