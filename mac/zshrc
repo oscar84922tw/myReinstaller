@@ -2,17 +2,19 @@
     export PYENV_VIRTUALENV_DISABLE_PROMPT=1
     export PATH="$HOME/.jenv/bin:$PATH"
     export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2
-    export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home/
+    export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
+    export JAVA_HOME_8=$(/usr/libexec/java_home -v 1.8)
     export GOPATH=/usr/local/Cellar/go/1.10.3
+
     export GOBIN=$GOPATH/bin
-    export PATH=$HOME/bin:/usr/local/bin:$GOPATH:$GOBIN:$HOME/.pyenv/bin:$PATH:/usr/local/Cellar/mysql/8.0.12/bin
+    export PATH=$HOME/bin:/usr/local/bin:$GOPATH:$GOBIN:$HOME/.pyenv/bin:$PATH:/usr/local/Cellar/mysql/8.0.12/bin:$JAVA_HOME:$JAVA_HOME_8
     # Path to your oh-my-zsh installation.
     export ZSH="/Users/$USER/.oh-my-zsh"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
     # it'll load a random theme each time that oh-my-zsh is loaded.
     # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-    ZSH_THEME="evan"
+    ZSH_THEME="spaceship"
 # ZSH_THEME="spaceship"
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -116,4 +118,3 @@ source $ZSH/oh-my-zsh.sh
     [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
     test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-    eval "$(jenv init -)"
