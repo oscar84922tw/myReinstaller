@@ -3,11 +3,13 @@
 " Vim-plug initialization
 set shortmess+=c
 set tags=./tags,./TAGS,tags;~,TAGS;~
+
 set encoding=utf-8
 set clipboard=unnamed
 set mouse=a
 set backspace=indent,eol,start
 set guifont=Noto\ Mono\ for\ Powerline:h12
+
 " Highlight the cursor
 set cursorcolumn
 set cursorline
@@ -16,6 +18,7 @@ colorscheme molokai
 " Set search Option
 set ignorecase
 set smartcase
+
 " always show status bar
 set ls=2
 " incremental search
@@ -38,10 +41,13 @@ ca w!! w !sudo tee "%"
 if has("gui_running")
   syntax on
   set hlsearch
+  set guifont=Noto\ Mono\ for\ Powerline:h14
   colorscheme molokai
   set bs=2
   set ai
-  set guioptions=
+  set guioptions-=r 
+  set guioptions-=L
+  set guioptions-=b
   set ruler
 endif
 
@@ -82,8 +88,8 @@ Plug 'vim-scripts/taglist.vim'
 " Plugins from github repos:
 Plug 'Chiel92/vim-autoformat'
 Plug 'nathanaelkane/vim-indent-guides'
-" Override configs by directory
-Plug 'arielrossanigo/dir-configs-override.vim'
+" " Override configs by directory
+" Plug 'arielrossanigo/dir-configs-override.vim'
 " Better file browser
 Plug 'scrooloose/nerdtree'
 " Code commenter
@@ -102,7 +108,7 @@ Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 " Task List 
 Plug 'vim-scripts/TaskList.vim'
 " vim go 
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Zen coding
 Plug 'mattn/emmet-vim'
 " Tab list panel
@@ -129,6 +135,9 @@ Plug 't9md/vim-choosewin'
 Plug 'scrooloose/syntastic'
 " gitgutter
 Plug 'airblade/vim-gitgutter'
+" Airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " csv.vim
 Plug 'chrisbra/csv.vim'
 " Folder
@@ -168,15 +177,6 @@ endif
 
 
 
-" ============================================================================
-" Auto add head info in .py file
-function! HeaderPython()
-    call setline(1, "#!/usr/bin/env python")
-    call append(1, "# -*- coding: utf-8 -*-")
-    normal G
-    normal o
-endf
-autocmd bufnewfile *.py call HeaderPython()
 
 
 " ============================================================================
@@ -217,19 +217,28 @@ let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_start_level=2
 " indent size
 let g:indent_guides_guide_size=1
+" ============================================================================
 " tabs and spaces handling
 set expandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+" Auto add head info in .py file
+function! HeaderPython()
+    call setline(1, "#!/usr/bin/env python")
+    call append(1, "# -*- coding: utf-8 -*-")
+    normal G
+    normal o
+endf
+autocmd bufnewfile *.py call HeaderPython()
+
 
 " tab length exceptions on some file types
 autocmd   FileType   html            setlocal   shiftwidth=4 tabstop=4 softtabstop=4
 autocmd   FileType   htmldjango      setlocal   shiftwidth=4 tabstop=4 softtabstop=4
 autocmd   FileType   javascript      setlocal   shiftwidth=4 tabstop=4 softtabstop=4
 autocmd   FileType   xml             setlocal   omnifunc=xmlcomplete#CompleteTags
-
-
+autocmd   BufNewFile,BufRead *.go    setlocal noexpandtab tabstop=4 shiftwidth=4 
 " ============================================================================
 " NerdTree
 " auto start NerdTree
@@ -266,13 +275,24 @@ imap <C-J> <C-X><C-O>
 
 
 " ============================================================================
-" Plugins settings and mappings
-" Edit them as you wish.
-" Run Python
-nnoremap <buffer> <F9> :w <CR> :exec '!python' shellescape(@%, 1)<cr>
-nnoremap <buffer> <F10> :w <CR> :exec '!python -m pdb' shellescape(@%, 1)<cr>
+" Run 
+
+" Python
+autocmd FileType python nnoremap <F9> :w <CR> :exec '!python' shellescape(@%, 1)<cr>
+autocmd FileType python nnoremap <F10> :w <CR> :exec '!python -m pdb' shellescape(@%, 1)<cr>
+
+" Go 
+autocmd FileType go nnoremap <F8> <Plug>(go-build)
+autocmd FileType go nnoremap <F9> <Plug>(go-run) 
+
 " AutoFormat
-noremap <F6> :Autoformat<CR>
+autocmd FileType python nnoremap <F6> :Autoformat<CR>
+
+" Golang go to definition 
+autocmd FileType go nnoremap ,d :GoDef<CR>
+
+" Golang go back to the definition from 
+autocmd FileType go nnoremap ,t :GoDefPop<CR>
 
 
 " ============================================================================
@@ -298,6 +318,25 @@ let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 " show pending tasks list
 map <F2> :TaskList<CR>
 
+
+" ============================================================================
+" Jedi-vim
+
+" All these mappings work only for python code:
+" Go to definition
+let g:jedi#completions_enabled = 0
+let g:jedi#goto_command = ',d'
+" Find ocurrences
+let g:jedi#usages_command = ',o'
+" Find assignments
+let g:jedi#goto_assignments_command = ',a'
+" Go to definition in new tab
+nmap ,D :tab split<CR>:call jedi#goto()<CR>
+
+let g:jedi#popup_select_first=0
+set completeopt=longest,menuone
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#popup_on_dot = 0
 
 " ============================================================================
 " Unite 
@@ -395,25 +434,6 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
 
 " ============================================================================
-" Jedi-vim
-
-" All these mappings work only for python code:
-" Go to definition
-let g:jedi#completions_enabled = 0
-let g:jedi#goto_command = ',d'
-" Find ocurrences
-let g:jedi#usages_command = ',o'
-" Find assignments
-let g:jedi#goto_assignments_command = ',a'
-" Go to definition in new tab
-nmap ,D :tab split<CR>:call jedi#goto()<CR>
-
-let g:jedi#popup_select_first=0
-set completeopt=longest,menuone
-let g:jedi#auto_vim_configuration = 0
-let g:jedi#popup_on_dot = 0
-
-" ============================================================================
 " Emmet ---
 let g:user_emmet_settings = {
             \  'indentation' : '  ',
@@ -506,7 +526,7 @@ let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
 inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
 
 " ============================================================================
-" Vim go 
+" vim-go
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
