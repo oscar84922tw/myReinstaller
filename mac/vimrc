@@ -55,6 +55,28 @@ endif
 set scrolloff=3
 
 " ============================================================================
+" better backup, swap and undos storage
+set directory=~/.vim/dirs/tmp     " directory to place swap files in
+set backup                        " make backup files
+set backupdir=~/.vim/dirs/backups " where to put backup files
+set undofile                      " persistent undos - undo after you re-open the file
+set undodir=~/.vim/dirs/undos
+set viminfo+=n~/.vim/dirs/viminfo
+" store yankring history file there too
+let g:yankring_history_dir = '~/.vim/dirs/'
+
+" create needed directories if they don't exist
+if !isdirectory(&backupdir)
+    call mkdir(&backupdir, "p")
+endif
+if !isdirectory(&directory)
+    call mkdir(&directory, "p")
+endif
+if !isdirectory(&undodir)
+    call mkdir(&undodir, "p")
+endif
+
+" ============================================================================
 autocmd VimEnter set shortmess-=c
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
 let vim_plug_just_installed = 0
@@ -174,10 +196,6 @@ if vim_plug_just_installed
     echo "Installing Bundles, please ignore key map error messages"
     :PlugInstall
 endif
-
-
-
-
 
 " ============================================================================
 " Js highlight
@@ -533,26 +551,4 @@ let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 " let g:go_fmt_command = "goimports"
-
-" ============================================================================
-" better backup, swap and undos storage
-set directory=~/.vim/dirs/tmp     " directory to place swap files in
-set backup                        " make backup files
-set backupdir=~/.vim/dirs/backups " where to put backup files
-set undofile                      " persistent undos - undo after you re-open the file
-set undodir=~/.vim/dirs/undos
-set viminfo+=n~/.vim/dirs/viminfo
-" store yankring history file there too
-let g:yankring_history_dir = '~/.vim/dirs/'
-
-" create needed directories if they don't exist
-if !isdirectory(&backupdir)
-    call mkdir(&backupdir, "p")
-endif
-if !isdirectory(&directory)
-    call mkdir(&directory, "p")
-endif
-if !isdirectory(&undodir)
-    call mkdir(&undodir, "p")
-endif
 
