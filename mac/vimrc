@@ -1,6 +1,13 @@
 " Author: Chen Hua Wei
 " ===========================================================================
 " Vim-plug initialization
+ augroup vimrc
+ 
+   autocmd!
+ 
+   autocmd BufWinEnter,Syntax * syn sync minlines=500 maxlines=500
+ 
+ augroup END
 set shortmess+=c
 set tags=./tags,./TAGS,tags;~,TAGS;~
 
@@ -103,8 +110,12 @@ endif
 " this needs to be here, so vim-plug knows we are declaring the plugins we
 " want to use
 call plug#begin('~/.vim/plugged')
+Plug 'fisadev/vim-isort'
+Plug 'w0rp/ale'
 " theme 
 Plug 'tomasr/molokai'
+" multiple cursors
+Plug 'terryma/vim-multiple-cursors'
 " Ctags
 Plug 'vim-scripts/taglist.vim'
 " Plugins from github repos:
@@ -116,6 +127,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'scrooloose/nerdtree'
 " Code commenter
 Plug 'scrooloose/nerdcommenter'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 " Class/module browser
 Plug 'majutsushi/tagbar'
 " Code and files fuzzy finder
@@ -125,7 +137,6 @@ Plug 'Shougo/unite-outline'
 Plug 'Shougo/neoyank.vim'
 Plug 'Shougo/neomru.vim'
 Plug 'Shougo/unite-help' 
-
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 " Task List 
 Plug 'vim-scripts/TaskList.vim'
@@ -551,4 +562,4 @@ let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 " let g:go_fmt_command = "goimports"
-
+let g:airline#extensions#ale#enabled = 1
