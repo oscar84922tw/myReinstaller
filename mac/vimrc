@@ -16,7 +16,6 @@ set clipboard=unnamed
 set mouse=a
 set backspace=indent,eol,start
 set guifont=Noto\ Mono\ for\ Powerline:h12
-
 " Highlight the cursor
 set cursorcolumn
 set cursorline
@@ -82,7 +81,19 @@ endif
 if !isdirectory(&undodir)
     call mkdir(&undodir, "p")
 endif
-
+" ============================================================================
+function s:MkNonExDir(file, buf)
+    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+        let dir=fnamemodify(a:file, ':h')
+        if !isdirectory(dir)
+            call mkdir(dir, 'p')
+        endif
+    endif
+endfunction
+augroup BWCCreateDir
+    autocmd!
+    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+augroup END
 " ============================================================================
 autocmd VimEnter set shortmess-=c
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
@@ -110,7 +121,9 @@ endif
 " this needs to be here, so vim-plug knows we are declaring the plugins we
 " want to use
 call plug#begin('~/.vim/plugged')
+Plug 'hashivim/vim-terraform'
 Plug 'fisadev/vim-isort'
+Plug 'pearofducks/ansible-vim'
 Plug 'w0rp/ale'
 " theme 
 Plug 'tomasr/molokai'
@@ -142,8 +155,6 @@ Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'vim-scripts/TaskList.vim'
 " vim go 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-" Zen coding
-Plug 'mattn/emmet-vim'
 " Tab list panel
 Plug 'kien/tabman.vim'
 " Surround
@@ -461,26 +472,6 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
-
-" ============================================================================
-" Emmet ---
-let g:user_emmet_settings = {
-            \  'indentation' : '  ',
-            \  'perl' : {
-            \    'aliases' : {
-            \      'req' : 'require '
-            \    },
-            \    'snippets' : {
-            \      'use' : "use strict\nuse warnings\n\n",
-            \      'warn' : "warn \"|\";",
-            \    }
-            \  }
-            \}
-
-let g:user_emmet_expandabbr_key = '<c-e>'
-
-let g:use_emmet_complete_tag = 1
-
 
 " ============================================================================
 " Autoclose

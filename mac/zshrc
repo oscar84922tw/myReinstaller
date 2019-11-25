@@ -1,11 +1,10 @@
 # If you come from bash you might have to change your $PATH.
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/$USER/.oh-my-zsh"
-
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-# ZSH_THEME="spaceship"
+ # ZSH_THEME="spaceship"
 ZSH_THEME="evan"
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -61,8 +60,6 @@ ZSH_THEME="evan"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
 git
-maven
-docker
 zsh-autosuggestions
 zsh-completions
 extract
@@ -79,11 +76,12 @@ source $ZSH/oh-my-zsh.sh
 export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-      export EDITOR='vim'
-    else
-          export EDITOR='mvim'
-        fi
+# if [[ -n $SSH_CONNECTION ]]; then
+      # export EDITOR='vim'
+    # else
+#          export EDITOR='mvim'
+        # fi
+export EDITOR='vim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -97,10 +95,22 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # For a full list of active aliases, run `alias`.
 #
 for host in $(awk '/^Host/{if ($2!="*") print $2}' ~/.ssh/config); do
-    alias $host="ssh $host"
+    alias $host="ssh -A $host"
 done
+
+alias battery_condition="system_profiler SPPowerDataType | grep "Condition" | awk '{print $2}'"
+alias battery_recharge_cycle="system_profiler SPPowerDataType | grep "Cycle Count" | awk '{print $}'"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source ~/.bash_profile
 
+function git_diff() {
+    git diff --no-ext-diff -w "$@" | vim -R -
+}
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/cornelious_chen/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/cornelious_chen/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/cornelious_chen/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/cornelious_chen/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
